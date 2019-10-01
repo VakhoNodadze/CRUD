@@ -9,4 +9,4 @@ info in the modals component, I reversed the flow from child to parent to first 
 props to Modals component. 
 As for the styles I used css modules and bootstrap. I know mix of those two may be odd, but since I was in a bit of a hurry, 
 I wanted some already made styles for easy use. 
-If I had more time I would probably refactor the code a bit more and split it into more components, get rid off bootstrap and use custom styles totally. I would also try to make the employee profile more realistic, with objects as field. (e.g. address could be a object with subfields). I would also definitely some validation.
+If I had more time I would probably refactor the code a bit more and split it into more components, specificly put some of the form code in Employees.js to Modal.js and pass the Employees state down as props to the modals, get rid off bootstrap and use custom styles totally. I would also try to make the employee profile more realistic, with objects as field. (e.g. address could be a object with subfields). I would also definitely some validation.
