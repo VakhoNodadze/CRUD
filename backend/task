@@ -1,0 +1,24 @@
+It's a homework-style task for REACT frontend developer,  to complete the test, basic NodeJS knowledge is also required.
+
+Use web stack  - MongoDB, Express, React, NodeJS with GraphQL
+
+Make Company employees page without authorization and with predefined company Id which is 1.
+
+On the first page make the main CRUD operations
+
+1. Create - company employee's basic info (first name, last name, address, email)
+2. Read - show list of company employees (first name, last name,  created date of the employee record in local DateTime format)
+3. Update - update recorded information of an employee (address, email)
+4. Delete - delete of company employee(s) record(s).
+
+You are  free to choose your preferred UI components library (e.g. React bootstrap) 
+
+After completing the coding challenge please describe your approach for your coding solutions, and if you will have more time what improvements should add to your code.
+
+You do not have to complete the test in one sitting.
+
+Once completed,  please share your code with us on Github, your test results will be confirmed to you by a member of our recruitment team along with next steps.
+
+We recognize this is your time investment and we appreciate your interest in Intrro
+
+Best of luck and we look forward to speaking to you soon

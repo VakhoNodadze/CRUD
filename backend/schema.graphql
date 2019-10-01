@@ -1,0 +1,34 @@
+type RootQuery {
+  employees: [Employee!]
+}
+
+type Employee {
+  _id: ID
+  first_name: String
+  last_name: String
+  email: String
+  address: String
+  create_date: String
+}
+
+type Success {
+  success: String
+}
+
+input EmployeeInput {
+  first_name: String
+  last_name: String
+  email: String
+  address: String
+}
+
+type RootMutation {
+  createEmployee(employee: EmployeeInput): Employee
+  updateEmployee(id: ID!, employee: EmployeeInput): Employee
+  removeEmployee(id: ID!): Success
+}
+
+schema {
+  query: RootQuery
+  mutation: RootMutation
+}
