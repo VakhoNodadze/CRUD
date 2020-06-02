@@ -6,9 +6,10 @@ type Employee {
   _id: ID
   first_name: String
   last_name: String
-  email: String
-  address: String
-  create_date: String
+  company: String
+  position: String
+  dx_city: String
+  dx_country: String
 }
 
 type Success {
@@ -18,8 +19,10 @@ type Success {
 input EmployeeInput {
   first_name: String
   last_name: String
-  email: String
-  address: String
+  company: String
+  position: String
+  dx_city: String
+  dx_country: String
 }
 
 type RootMutation {

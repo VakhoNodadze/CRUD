@@ -1,21 +1,14 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
 
-import Home from "./components/Home";
-import Employee from "./components/Employee";
-import Employees from "./components/Employees";
-import Navigation from "./components/navigation/navigation";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{height: '100vh', width: '100vw', background: 'rgb(241, 243, 244)'}}>
       <BrowserRouter>
-        <Navigation />
         <Switch>
           <Route path="/" component={Home} exact />
-          <Route path="/employees" component={Employees} exact />
-          <Route path="/employee/:id" component={Employee} exact />
         </Switch>
       </BrowserRouter>
     </div>

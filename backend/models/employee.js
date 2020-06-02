@@ -6,11 +6,10 @@ const employeeSchema = new Schema({
   first_name: String,
   last_name: String,
   email: String,
-  address: String,
-  create_date: {
-    type: String,
-    required: true
-  },
+  position: String,
+  company: String,
+  dx_city: String,
+  dx_country: String,
   company_id: Number
 });
 
