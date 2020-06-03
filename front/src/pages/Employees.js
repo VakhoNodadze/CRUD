@@ -1,32 +1,21 @@
 import React, {useState} from 'react';
-import { useQuery } from 'react-apollo-hooks';
+import { useQuery, useMutation} from 'react-apollo-hooks';
 import gql from 'graphql-tag';
+import useToasts from '../customHooks/useToasts';
+import { capitalizeFirstLetter } from '../utils/helpers';
 
 import Employee from "../components/shared/employee/Employee";
 
-const GET_EMPLOYEES = gql`
-    query  employees{
-        employees{
-            _id
-            first_name
-            last_name
-            email
-            address
-            create_date
-        }
-    }
-`;
 
-const Employees = ({addEmployeeModal, setAddEmployeeModal}) => {
+const Employees = ({emloyeeArray}) => {
 
-  const { data: employeesRes} = useQuery(GET_EMPLOYEES, { fetchPolicy: 'network-only' });
-  const emloyeeArray = employeesRes && employeesRes.employees;
+
 
 
   return (
     <>
       {emloyeeArray && emloyeeArray.map((employee) => (
-        <Employee {...employee} employee={employee} addEmployeeModal={addEmployeeModal} setAddEmployeeModal={setAddEmployeeModal}/>
+        <Employee {...employee} employee={employee} />
       ))}
     </>
   );

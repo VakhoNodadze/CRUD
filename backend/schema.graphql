@@ -4,8 +4,8 @@ type RootQuery {
 
 type Employee {
   _id: ID
-  first_name: String
-  last_name: String
+  firstName: String
+  lastName: String
   company: String
   position: String
   dx_city: String
@@ -17,8 +17,8 @@ type Success {
 }
 
 input EmployeeInput {
-  first_name: String
-  last_name: String
+  firstName: String
+  lastName: String
   company: String
   position: String
   dx_city: String
@@ -26,7 +26,7 @@ input EmployeeInput {
 }
 
 type RootMutation {
-  createEmployee(employee: EmployeeInput): Employee
+  createEmployee(firstName: String, lastName: String, company: String, position: String, dx_city: String, dx_country: String): Employee
   updateEmployee(id: ID!, employee: EmployeeInput): Employee
   removeEmployee(id: ID!): Success
 }

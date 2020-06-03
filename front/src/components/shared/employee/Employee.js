@@ -8,36 +8,23 @@ import Divider from '../../Divider';
 import List from '../../List';
 import Tooltip from '../../Tooltip';
 import { capitalizeWords } from '../../../utils/helpers';
-import NewEmployeeModal from "../modals/NewEmployeeModal";
 
 
 
 const EmployeeItem = ({
   _id,
-  first_name,
-  last_name,
+  firstName,
+  lastName,
   company,
   dx_country,
   dx_city,
-  position,
-  employee,
-                          addEmployeeModal,
-                          setAddEmployeeModal
+  position
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
-  const renderNewEmployeeModal = () => (
-    <NewEmployeeModal
-      isOpen={addEmployeeModal}
-      onClose={() => setAddEmployeeModal(false)}
-      {...employee}
-    />
-  );
-  console.log(addEmployeeModal)
 
   return (
     <div style={{ width: '300px', height: '358px' }}>
-      {addEmployeeModal && renderNewEmployeeModal()}
       <Reveal isActive={isFlipped}>
         <Reveal.Content>
           <Card>
@@ -70,7 +57,7 @@ const EmployeeItem = ({
                 {/* <Avatar avatar={{ url: profile_url || avatar_url }} rounded firstName={full_name} /> */}
                 {/*{renderAvatar()}*/}
                 <Item.Content style={{ width: 170, marginLeft: 16 }}>
-                  <Item.Header numOfLines={1}>{first_name} {last_name}</Item.Header>
+                  <Item.Header numOfLines={1}>{firstName} {lastName}</Item.Header>
                   <Item.Subheader numOfLines={1}>{position}</Item.Subheader>
                   <Divider isHidden />
                   <Item.Extra numOfLines={1}>At {capitalizeWords(company)}</Item.Extra>

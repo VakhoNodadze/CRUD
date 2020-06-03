@@ -6,10 +6,10 @@ import {required} from "../../../utils/validator";
 import Modal from "../../Modal";
 
 
-const NewEmployeeModal = ({isOpen, onClose, first_name, last_name, position, company, dx_country, dx_city}) => {
+const NewEmployeeModal = ({isOpen, onClose, firstName, lastName, position, company, dx_country, dx_city, handleSubmit}) => {
   const initialValues = {
-    first_name,
-    last_name,
+    firstName,
+    lastName,
     position,
     company
   };
@@ -17,29 +17,33 @@ const NewEmployeeModal = ({isOpen, onClose, first_name, last_name, position, com
     mode: 'onChange',
     defaultValues: initialValues
   });
+  const onSubmit = (values) => {
+    handleSubmit(values);
+    onClose(false);
+  };
   return (
     <Modal isOpen={isOpen}
       onClose={() => onClose(false)}
       size="small">
       <Modal.Content>
         <FormContext {...method}>
-          <form onSubmit={method.handleSubmit(() => {})} style={{ marginLeft: '50px' }}>
+          <form onSubmit={method.handleSubmit(onSubmit)} style={{ marginLeft: '50px' }}>
             <div>
               <Form.Field>
                 <Form.Label name="First name" />
-                <Form.Input name="first_name" validate={required} />
+                <Form.Input name="firstName" />
               </Form.Field>
               <Form.Field>
                 <Form.Label name="Last name" />
-                <Form.Input name="last_name" validate={required} />
+                <Form.Input name="lastName" />
               </Form.Field>
               <Form.Field>
                 <Form.Label name="Job title" />
-                <Form.Input name="position" validate={required} />
+                <Form.Input name="position" />
               </Form.Field>
               <Form.Field>
                 <Form.Label name="Company" />
-                <Form.Input name="company" validate={required} />
+                <Form.Input name="company" />
               </Form.Field>
             </div>
             <div
