@@ -10,6 +10,7 @@ type Employee {
   position: String
   dx_city: String
   dx_country: String
+  createDate: String
 }
 
 type Success {
@@ -23,6 +24,7 @@ input EmployeeInput {
   position: String
   dx_city: String
   dx_country: String
+  createDate: String
 }
 
 type RootMutation {

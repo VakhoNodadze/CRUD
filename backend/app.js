@@ -1,17 +1,17 @@
-var fs = require("fs");
-var path = require("path");
-var express = require("express");
-var graphqlHTTP = require("express-graphql");
-var { buildSchema } = require("graphql");
+let fs = require("fs");
+let path = require("path");
+let express = require("express");
+let graphqlHTTP = require("express-graphql");
+let { buildSchema } = require("graphql");
 
-var schema = buildSchema(
+let schema = buildSchema(
   fs.readFileSync(path.resolve(__dirname, "schema.graphql")).toString()
 );
 
-var mongoose = require("mongoose");
-var Employee = require("./models/employee");
+let mongoose = require("mongoose");
+let Employee = require("./models/employee");
 
-var root = {
+let root = {
   employees: () => {
     return Employee.find()
       .then(employees => {
@@ -26,9 +26,8 @@ var root = {
   },
   createEmployee: args => {
     const employee = new Employee({
-      ...args.employee,
-      create_date: Date.now(),
-      company_id: 1
+      ...args,
+      createDate: Date.now(),
     });
 
     return employee
@@ -39,9 +38,9 @@ var root = {
       });
   },
   updateEmployee: args => {
-    return Employee.updateOne({ _id: args.id }, { ...args.employee })
+    return Employee.updateOne({ _id: args.id }, { ...args })
       .then(result => {
-        return { ...args.employee };
+        return { ...args };
       })
       .catch(err => {
         console.log(err);
@@ -54,7 +53,7 @@ var root = {
   }
 };
 
-var app = express();
+let app = express();
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
