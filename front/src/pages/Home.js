@@ -3,7 +3,7 @@ import Employees from "./Employees";
 import Grid from '../components/Grid';
 import Container from '../components/Container';
 import Button from "../components/Button";
-import NewEmployeeModal from "../components/shared/modals/NewEmployeeModal";
+import EmployeeFormModal from "../components/shared/modals/EmployeeFormModal";
 import gql from "graphql-tag";
 import {useMutation, useQuery} from "react-apollo-hooks";
 import {capitalizeFirstLetter} from "../utils/helpers";
@@ -58,7 +58,6 @@ const UPDATE_EMPLOYEE = gql `
 `
 
 const Home = () => {
-    const [id, setId] = useState(null)
     const [addEmployeeModal, setAddEmployeeModal] = useState(false);
     const [add_new_employee] = useMutation(ADD_NEW_EMPLOYEE);
     const [remove_employee] = useMutation(REMOVE_EMPLOYEE);
@@ -96,7 +95,8 @@ const Home = () => {
             addToast('error', `${capitalizeFirstLetter(error.message.replace('GraphQL error: ', ''))}`)
         }
     }
-    const handleEmplyeeUpdate = async values => {
+    const handleEmplyeeUpdate = async (values, id) => {
+        console.log('id', id)
         try {
             await update_employee({
                 variables: {
@@ -116,7 +116,7 @@ const Home = () => {
     }
   
   const renderNewEmployeeModal = () => (
-    <NewEmployeeModal
+    <EmployeeFormModal
       isOpen={addEmployeeModal}
       onClose={() => setAddEmployeeModal(false)}
       handleSubmit={handleEmployeeAdd}
@@ -140,7 +140,7 @@ const Home = () => {
       </Grid>
       <Grid>
         <Grid.Item xs={12}>
-          <Employees emloyeeArray={emloyeeArray} handleEmployeeRemove={handleEmployeeRemove} setId={setId} handleEmplyeeUpdate={handleEmplyeeUpdate}/>
+          <Employees emloyeeArray={emloyeeArray} handleEmployeeRemove={handleEmployeeRemove} handleEmplyeeUpdate={handleEmplyeeUpdate}/>
         </Grid.Item>
       </Grid>
       {}

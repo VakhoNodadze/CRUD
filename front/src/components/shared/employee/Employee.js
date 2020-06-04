@@ -11,15 +11,14 @@ import Avatar from '../../Avatar';
 import RemoveEmployeeModal from '../modals/RemoveEmployeeModal';
 import { capitalizeWords } from '../../../utils/helpers';
 import Pin from "../../Icon/Pin";
-import UpdateEmployeeModal from "../modals/UpdateEmployeeModal";
+import EmployeeFormModal from "../modals/EmployeeFormModal";
 
 
 
 const EmployeeItem = ({
   employee,
   handleEmployeeRemove,
-  handleEmplyeeUpdate,
-  setId
+  handleEmplyeeUpdate
 }) => {
   const { _id, firstName, lastName, company, location, position } = employee;
   const [isFlipped, setIsFlipped] = useState(false);
@@ -27,7 +26,6 @@ const EmployeeItem = ({
   const [updateEmployeeModalShow, setUpdateEmployeeModalShow] = useState(false);
   
   const onEdit = () => {
-    setId(_id);
     setUpdateEmployeeModalShow(true);
   };
 
@@ -44,7 +42,7 @@ const EmployeeItem = ({
     />
   );
   const renderUpdateEmployeeModal = () => (
-    <UpdateEmployeeModal
+    <EmployeeFormModal
       isOpen={updateEmployeeModalShow}
       onClose={() => setUpdateEmployeeModalShow(false)}
       {...employee}
