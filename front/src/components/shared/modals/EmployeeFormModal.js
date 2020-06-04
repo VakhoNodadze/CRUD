@@ -69,7 +69,7 @@ const EmployeeFormModal = ({isOpen, onClose, _id, firstName, lastName, position,
                     method.reset(initialValues);
                   }}
                 >
-                    CANEL
+                    RESET
                 </Button>
               </div>
               <div style={{ width: '60%' }}>
