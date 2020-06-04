@@ -1,23 +1,20 @@
-import React, {useState} from 'react';
-import { useQuery, useMutation} from 'react-apollo-hooks';
-import gql from 'graphql-tag';
-import useToasts from '../customHooks/useToasts';
-import { capitalizeFirstLetter } from '../utils/helpers';
+import React, {useEffect} from 'react';
+import Grid from "../components/Grid";
 
 import Employee from "../components/shared/employee/Employee";
 
-
-const Employees = ({emloyeeArray}) => {
-
+const Employees = ({emloyeeArray, handleEmployeeRemove}) => {
 
 
 
   return (
-    <>
+    <Grid style={{width: '100%'}} spacing={4}>
       {emloyeeArray && emloyeeArray.map((employee) => (
-        <Employee {...employee} employee={employee} />
+        <Grid.Item xs={12} md={6} lg={4} key={employee._id}>
+          <Employee employee={employee} handleEmployeeRemove={handleEmployeeRemove} />
+        </Grid.Item>
       ))}
-    </>
+    </Grid>
   );
 };
 

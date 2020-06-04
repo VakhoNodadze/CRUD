@@ -1,6 +1,7 @@
 let fs = require("fs");
 let path = require("path");
 let express = require("express");
+let avatarsMiddleware = require('adorable-avatars')
 let graphqlHTTP = require("express-graphql");
 let { buildSchema } = require("graphql");
 
@@ -57,6 +58,7 @@ let app = express();
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader('Access-Control-Allow-Headers', "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   if (req.method === "OPTIONS") {
@@ -64,6 +66,7 @@ app.use((req, res, next) => {
   }
   next();
 });
+app.use('/myAvatars', avatarsMiddleware)
 app.use(
   "/graphql",
   graphqlHTTP({

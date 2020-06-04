@@ -18,32 +18,54 @@ const GET_EMPLOYEES = gql`
             lastName
             position
             company
-            dx_country
-            dx_city
+            location
         }
     }
 `;
 
 const ADD_NEW_EMPLOYEE = gql`
-    mutation createEmployee($firstName: String, $lastName: String, $company: String, $position: String, $dx_city: String, $dx_country: String) {
-        createEmployee(firstName: $firstName, lastName: $lastName, company: $company, position: $position, dx_city: $dx_city, dx_country: $dx_country) {
+    mutation createEmployee($firstName: String, $lastName: String, $company: String, $position: String, $location: String) {
+        createEmployee(firstName: $firstName, lastName: $lastName, company: $company, position: $position, location: $location) {
             _id
             firstName
             lastName
             position
             company
-            dx_city
-            dx_country
+            location
         }
     }
 `;
 
+const REMOVE_EMPLOYEE = gql `
+    mutation removeEmployee($id: ID!){
+        removeEmployee(id: $id){
+            success
+        }
+    }
+`
+
+const UPDATE_EMPLOYEE = gql `
+    mutation updateEmployee($id: ID!, $firstName: String, $lastName: String, $company: String, $position: String, $location: String){
+        updateEmployee(id: $id, firstName: $firstName, lastName: $lastName, company: $company, position: $position, location: $location){
+            _id
+            firstName
+            lastName
+            position
+            company
+            location
+        }
+    }
+`
+
 const Home = () => {
-  const [addEmployeeModal, setAddEmployeeModal] = useState(false);
-    const [add_new_employee, { data }] = useMutation(ADD_NEW_EMPLOYEE);
+    const [addEmployeeModal, setAddEmployeeModal] = useState(false);
+    const [add_new_employee] = useMutation(ADD_NEW_EMPLOYEE);
+    const [remove_employee] = useMutation(REMOVE_EMPLOYEE);
+    const [update_employee] = useMutation(UPDATE_EMPLOYEE);
     const [addToast, renderToasts] = useToasts();
     const { data: employeesRes, refetch: refetchEmployees} = useQuery(GET_EMPLOYEES, { fetchPolicy: 'network-only' });
     const emloyeeArray = employeesRes && employeesRes.employees;
+
     const handleEmployeeAdd = async values => {
         try {
             await add_new_employee({
@@ -52,8 +74,7 @@ const Home = () => {
                     lastName: values.lastName,
                     position: values.position,
                     company: values.company,
-                    dx_city: values.dx_city,
-                    dx_country: values.dx_country
+                    location: values.location
                 }
             })
             refetchEmployees()
@@ -61,6 +82,36 @@ const Home = () => {
             addToast('error', `${capitalizeFirstLetter(error.message.replace('GraphQL error: ', ''))}`)
         }
     }
+
+    const handleEmployeeRemove = async id => {
+        try {
+            await remove_employee({
+                variables: {
+                    id
+                }
+            })
+            refetchEmployees()
+        } catch (error) {
+            addToast('error', `${capitalizeFirstLetter(error.message.replace('GraphQL error: ', ''))}`)
+        }
+    }
+    // const handleEmplyeeUpdate = async values => {
+    //     try {
+    //         await update_employee({
+    //             variables: {
+    //                 _id: values._id,
+    //                 firstName: values.firstName,
+    //                 lastName: values.lastName,
+    //                 position: values.position,
+    //                 company: values.company,
+    //                 location: values.location
+    //             }
+    //         })
+    //         refetchEmployees()
+    //     } catch (error) {
+    //         addToast('error', `${capitalizeFirstLetter(error.message.replace('GraphQL error: ', ''))}`)
+    //     }
+    // }
   
   const renderNewEmployeeModal = () => (
     <NewEmployeeModal
@@ -77,13 +128,17 @@ const Home = () => {
         <Grid.Item xs={6}>
           <h1>Employees</h1>
         </Grid.Item>
-        <Grid.Item xs={6}>
-          <Button onClick={() => setAddEmployeeModal(true)}>ADD EMPLOYEES</Button>
+        <Grid.Item xs={6} style={{justifyContent: 'center'}}>
+          <Button onClick={() => setAddEmployeeModal(true)}
+                  circular
+                  color="primary"
+                  size="mini"
+          >ADD EMPLOYEES</Button>
         </Grid.Item>
       </Grid>
       <Grid>
         <Grid.Item xs={12}>
-          <Employees emloyeeArray={emloyeeArray} />
+          <Employees emloyeeArray={emloyeeArray} handleEmployeeRemove={handleEmployeeRemove} />
         </Grid.Item>
       </Grid>
       {}

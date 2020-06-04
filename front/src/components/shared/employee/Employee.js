@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import RedX from '../../../resources/svg/x_red.svg';
 import styled from 'styled-components';
 import Reveal from '../../Reveal';
@@ -7,37 +7,67 @@ import Item from '../../Item';
 import Divider from '../../Divider';
 import List from '../../List';
 import Tooltip from '../../Tooltip';
+import Avatar from '../../Avatar';
+import RemoveEmployeeModal from '../modals/RemoveEmployeeModal';
 import { capitalizeWords } from '../../../utils/helpers';
+import Pin from "../../Icon/Pin";
+import NewEmployeeModal from "../modals/NewEmployeeModal";
 
 
 
 const EmployeeItem = ({
-  _id,
-  firstName,
-  lastName,
-  company,
-  dx_country,
-  dx_city,
-  position
+  employee,
+  handleEmployeeRemove
 }) => {
+  const { _id, firstName, lastName, company, location, position } = employee;
   const [isFlipped, setIsFlipped] = useState(false);
+  const [removeEmployeeModalShow, setRemoveEmployeeModalShow] = useState(false);
+  const [updateEmployeeModalShow, setUpdateEmployeeModalShow] = useState(false);
+  
+  // const onEdit = () => {
+  //   setUpdateEmployeeModalShow(true);
+  //   console.log(updateEmployeeModalShow)
+  // };
 
+  const onRemove = () => {
+    setRemoveEmployeeModalShow(true);
+    console.log(removeEmployeeModalShow);
+  };
+
+
+  const renderRemoveEmployeeModal = () => (
+    <RemoveEmployeeModal
+      isOpen={removeEmployeeModalShow}
+      onClose={() => setRemoveEmployeeModalShow(false)}
+      handleSubmit={() => handleEmployeeRemove(_id)}
+    />
+  );
+  // const renderUpdateEmployeeModal = () => (
+  //   <NewEmployeeModal
+  //     isOpen={removeEmployeeModalShow}
+  //     onClose={() => setRemoveEmployeeModalShow(false)}
+  //     {...employee}
+  //     handleSubmit={handleEmplyeeUpdate()}
+  //   />
+  // );
 
   return (
     <div style={{ width: '300px', height: '358px' }}>
+      {removeEmployeeModalShow && renderRemoveEmployeeModal()}
+      {/*{updateEmployeeModalShow && renderUpdateEmployeeModal()}*/}
       <Reveal isActive={isFlipped}>
         <Reveal.Content>
           <Card>
             <div
               className="remove"
-              onClick={() => console.log('remove')}
+              onClick={() => onRemove()}
               style={{
                 position: 'absolute',
                 top: 6,
                 right: 6
               }}
             >
-              <Tooltip content="Bad match? Please tell us why" position="top center">
+              <Tooltip content="Remove User?" position="top center">
                 <div
                   style={{
                     display: 'flex',
@@ -54,14 +84,14 @@ const EmployeeItem = ({
             </div>
             <Card.Content>
               <Item size="big">
-                {/* <Avatar avatar={{ url: profile_url || avatar_url }} rounded firstName={full_name} /> */}
+                <Avatar avatar={{ url: `https://api.adorable.io/avatars/${_id}` }} rounded firstName={firstName} />
                 {/*{renderAvatar()}*/}
                 <Item.Content style={{ width: 170, marginLeft: 16 }}>
                   <Item.Header numOfLines={1}>{firstName} {lastName}</Item.Header>
                   <Item.Subheader numOfLines={1}>{position}</Item.Subheader>
                   <Divider isHidden />
                   <Item.Extra numOfLines={1}>At {capitalizeWords(company)}</Item.Extra>
-                  <Item.Extra numOfLines={1}>{dx_city}, {dx_country}</Item.Extra>
+                  <Item.Extra numOfLines={1}> <Pin/>{location}</Item.Extra>
                 </Item.Content>
               </Item>
             </Card.Content>
@@ -75,9 +105,8 @@ const EmployeeItem = ({
             </Card.Content>
             <Card.Content extra>
               <List>
-                <List.Item onClick={() => setIsFlipped(true)}>SEE EXPERIENCE</List.Item>
-                <List.Item onClick={() => console.log('reach out')} style={{ color: '#2675fe' }}>
-                    REACH OUT
+                <List.Item onClick={() => console.log('ff')} style={{ color: '#2675fe' }}>
+                    EDIT
                 </List.Item>
               </List>
             </Card.Content>
@@ -94,7 +123,7 @@ const EmployeeItem = ({
                 right: 6
               }}
             >
-              <Tooltip content="Bad match? Please tell us why" position="top center">
+              <Tooltip content="Remove User?" position="top center">
                 <div
                   style={{
                     display: 'flex',
@@ -118,9 +147,8 @@ const EmployeeItem = ({
             </Card.Content>
             <Card.Content extra>
               <List>
-                <List.Item onClick={() => setIsFlipped(false)}>HIDE EXPERIENCE</List.Item>
                 <List.Item onClick={() => console.log('reach out')} style={{ color: '#2675fe' }}>
-                    REACH OUT
+                    EDIT
                 </List.Item>
               </List>
             </Card.Content>

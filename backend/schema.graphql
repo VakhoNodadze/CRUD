@@ -8,8 +8,7 @@ type Employee {
   lastName: String
   company: String
   position: String
-  dx_city: String
-  dx_country: String
+  location: String
   createDate: String
 }
 
@@ -22,14 +21,13 @@ input EmployeeInput {
   lastName: String
   company: String
   position: String
-  dx_city: String
-  dx_country: String
+  location: String
   createDate: String
 }
 
 type RootMutation {
-  createEmployee(firstName: String, lastName: String, company: String, position: String, dx_city: String, dx_country: String): Employee
-  updateEmployee(id: ID!, employee: EmployeeInput): Employee
+  createEmployee(firstName: String, lastName: String, company: String, position: String, location: String): Employee
+  updateEmployee(id: ID!, firstName: String, lastName: String, company: String, position: String, location: String): Employee
   removeEmployee(id: ID!): Success
 }
 

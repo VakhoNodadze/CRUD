@@ -7,8 +7,7 @@ const employeeSchema = new Schema({
   lastName: String,
   company: String,
   position: String,
-  dx_city: String,
-  dx_country: String,
+  location: String,
   createDate: String
 });
 

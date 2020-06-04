@@ -11,8 +11,7 @@ import {
   StyledSpinner,
   StyledCheckbox,
   StyledChevronDown,
-  StyledClear,
-  StyledTags
+  StyledClear
 } from './styled'
 
 import * as icons from '../Icon'

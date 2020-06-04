@@ -6,12 +6,14 @@ import {required} from "../../../utils/validator";
 import Modal from "../../Modal";
 
 
-const NewEmployeeModal = ({isOpen, onClose, firstName, lastName, position, company, dx_country, dx_city, handleSubmit}) => {
+const NewEmployeeModal = ({isOpen, onClose, _id, firstName, lastName, position, company, location, handleSubmit}) => {
   const initialValues = {
+    _id,
     firstName,
     lastName,
     position,
-    company
+    company,
+    location
   };
   const method = useForm({
     mode: 'onChange',
@@ -27,7 +29,7 @@ const NewEmployeeModal = ({isOpen, onClose, firstName, lastName, position, compa
       size="small">
       <Modal.Content>
         <FormContext {...method}>
-          <form onSubmit={method.handleSubmit(onSubmit)} style={{ marginLeft: '50px' }}>
+          <form onSubmit={method.handleSubmit(onSubmit)}>
             <div>
               <Form.Field>
                 <Form.Label name="First name" />
@@ -44,6 +46,10 @@ const NewEmployeeModal = ({isOpen, onClose, firstName, lastName, position, compa
               <Form.Field>
                 <Form.Label name="Company" />
                 <Form.Input name="company" />
+              </Form.Field>
+              <Form.Field>
+                <Form.Label name="Location" />
+                <Form.Input name="location" />
               </Form.Field>
             </div>
             <div
