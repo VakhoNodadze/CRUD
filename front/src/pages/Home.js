@@ -58,6 +58,7 @@ const UPDATE_EMPLOYEE = gql `
 `
 
 const Home = () => {
+    const [id, setId] = useState(null)
     const [addEmployeeModal, setAddEmployeeModal] = useState(false);
     const [add_new_employee] = useMutation(ADD_NEW_EMPLOYEE);
     const [remove_employee] = useMutation(REMOVE_EMPLOYEE);
@@ -95,23 +96,25 @@ const Home = () => {
             addToast('error', `${capitalizeFirstLetter(error.message.replace('GraphQL error: ', ''))}`)
         }
     }
-    // const handleEmplyeeUpdate = async values => {
-    //     try {
-    //         await update_employee({
-    //             variables: {
-    //                 _id: values._id,
-    //                 firstName: values.firstName,
-    //                 lastName: values.lastName,
-    //                 position: values.position,
-    //                 company: values.company,
-    //                 location: values.location
-    //             }
-    //         })
-    //         refetchEmployees()
-    //     } catch (error) {
-    //         addToast('error', `${capitalizeFirstLetter(error.message.replace('GraphQL error: ', ''))}`)
-    //     }
-    // }
+    const handleEmplyeeUpdate = async values => {
+        console.log(id)
+        // try {
+        //     await update_employee({
+        //         variables: {
+        //             id,
+        //             firstName: values.firstName,
+        //             lastName: values.lastName,
+        //             position: values.position,
+        //             company: values.company,
+        //             location: values.location
+        //         }
+        //     })
+        //     refetchEmployees()
+        // } catch (error) {
+        //     addToast('error', `${capitalizeFirstLetter(error.message.replace('GraphQL error: ', ''))}`)
+        //     console.log(error.message)
+        // }
+    }
   
   const renderNewEmployeeModal = () => (
     <NewEmployeeModal
@@ -138,7 +141,7 @@ const Home = () => {
       </Grid>
       <Grid>
         <Grid.Item xs={12}>
-          <Employees emloyeeArray={emloyeeArray} handleEmployeeRemove={handleEmployeeRemove} />
+          <Employees emloyeeArray={emloyeeArray} handleEmployeeRemove={handleEmployeeRemove} setId={setId} handleEmplyeeUpdate={handleEmplyeeUpdate}/>
         </Grid.Item>
       </Grid>
       {}

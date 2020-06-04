@@ -4,9 +4,13 @@ import Form from '../../Form';
 import Button from "../../Button";
 import {required} from "../../../utils/validator";
 import Modal from "../../Modal";
+import gql from "graphql-tag";
+import {useMutation} from "react-apollo-hooks";
+import {capitalizeFirstLetter} from "../../../utils/helpers";
 
 
-const NewEmployeeModal = ({isOpen, onClose, firstName, lastName, position, company, location, handleSubmit}) => {
+const UpdateEmployeeModal = ({isOpen, onClose, _id, firstName, lastName, position, company, location, handleSubmit}) => {
+
   const initialValues = {
     firstName,
     lastName,
@@ -19,7 +23,8 @@ const NewEmployeeModal = ({isOpen, onClose, firstName, lastName, position, compa
     defaultValues: initialValues
   });
   const onSubmit = (values) => {
-    handleSubmit(values);
+    console.log('values', values);
+    // handleSubmit(values);
     onClose(false);
   };
   return (
@@ -69,7 +74,7 @@ const NewEmployeeModal = ({isOpen, onClose, firstName, lastName, position, compa
                     method.reset(initialValues);
                   }}
                 >
-                    CANEL
+                                    CANCEL
                 </Button>
               </div>
               <div style={{ width: '60%' }}>
@@ -80,7 +85,7 @@ const NewEmployeeModal = ({isOpen, onClose, firstName, lastName, position, compa
                   variant="contained"
                   disabled={Object.keys(method.errors).length > 0}
                 >
-                    SAVE
+                                    SAVE
                 </Button>
               </div>
             </div>
@@ -91,4 +96,4 @@ const NewEmployeeModal = ({isOpen, onClose, firstName, lastName, position, compa
   );
 };
 
-export default NewEmployeeModal;
+export default UpdateEmployeeModal;

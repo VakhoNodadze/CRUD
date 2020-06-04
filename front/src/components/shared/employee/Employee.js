@@ -11,27 +11,28 @@ import Avatar from '../../Avatar';
 import RemoveEmployeeModal from '../modals/RemoveEmployeeModal';
 import { capitalizeWords } from '../../../utils/helpers';
 import Pin from "../../Icon/Pin";
-import NewEmployeeModal from "../modals/NewEmployeeModal";
+import UpdateEmployeeModal from "../modals/UpdateEmployeeModal";
 
 
 
 const EmployeeItem = ({
   employee,
-  handleEmployeeRemove
+  handleEmployeeRemove,
+  handleEmplyeeUpdate,
+  setId
 }) => {
   const { _id, firstName, lastName, company, location, position } = employee;
   const [isFlipped, setIsFlipped] = useState(false);
   const [removeEmployeeModalShow, setRemoveEmployeeModalShow] = useState(false);
   const [updateEmployeeModalShow, setUpdateEmployeeModalShow] = useState(false);
   
-  // const onEdit = () => {
-  //   setUpdateEmployeeModalShow(true);
-  //   console.log(updateEmployeeModalShow)
-  // };
+  const onEdit = () => {
+    setId(_id);
+    setUpdateEmployeeModalShow(true);
+  };
 
   const onRemove = () => {
     setRemoveEmployeeModalShow(true);
-    console.log(removeEmployeeModalShow);
   };
 
 
@@ -39,22 +40,22 @@ const EmployeeItem = ({
     <RemoveEmployeeModal
       isOpen={removeEmployeeModalShow}
       onClose={() => setRemoveEmployeeModalShow(false)}
-      handleSubmit={() => handleEmployeeRemove(_id)}
+      handleSubmit={(_id) => handleEmployeeRemove(_id)}
     />
   );
-  // const renderUpdateEmployeeModal = () => (
-  //   <NewEmployeeModal
-  //     isOpen={removeEmployeeModalShow}
-  //     onClose={() => setRemoveEmployeeModalShow(false)}
-  //     {...employee}
-  //     handleSubmit={handleEmplyeeUpdate()}
-  //   />
-  // );
+  const renderUpdateEmployeeModal = () => (
+    <UpdateEmployeeModal
+      isOpen={updateEmployeeModalShow}
+      onClose={() => setUpdateEmployeeModalShow(false)}
+      {...employee}
+      handleSubmit={() => handleEmplyeeUpdate()}
+    />
+  );
 
   return (
     <div style={{ width: '300px', height: '358px' }}>
       {removeEmployeeModalShow && renderRemoveEmployeeModal()}
-      {/*{updateEmployeeModalShow && renderUpdateEmployeeModal()}*/}
+      {updateEmployeeModalShow && renderUpdateEmployeeModal()}
       <Reveal isActive={isFlipped}>
         <Reveal.Content>
           <Card>
@@ -105,7 +106,7 @@ const EmployeeItem = ({
             </Card.Content>
             <Card.Content extra>
               <List>
-                <List.Item onClick={() => console.log('ff')} style={{ color: '#2675fe' }}>
+                <List.Item onClick={() => onEdit()} style={{ color: '#2675fe' }}>
                     EDIT
                 </List.Item>
               </List>
