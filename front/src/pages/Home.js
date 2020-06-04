@@ -97,23 +97,22 @@ const Home = () => {
         }
     }
     const handleEmplyeeUpdate = async values => {
-        console.log(id)
-        // try {
-        //     await update_employee({
-        //         variables: {
-        //             id,
-        //             firstName: values.firstName,
-        //             lastName: values.lastName,
-        //             position: values.position,
-        //             company: values.company,
-        //             location: values.location
-        //         }
-        //     })
-        //     refetchEmployees()
-        // } catch (error) {
-        //     addToast('error', `${capitalizeFirstLetter(error.message.replace('GraphQL error: ', ''))}`)
-        //     console.log(error.message)
-        // }
+        try {
+            await update_employee({
+                variables: {
+                    id,
+                    firstName: values && values.firstName,
+                    lastName: values && values.lastName,
+                    position: values && values.position,
+                    company: values && values.company,
+                    location: values && values.location
+                }
+            })
+            refetchEmployees()
+        } catch (error) {
+            addToast('error', `${capitalizeFirstLetter(error.message.replace('GraphQL error: ', ''))}`)
+            console.log(error.message)
+        }
     }
   
   const renderNewEmployeeModal = () => (

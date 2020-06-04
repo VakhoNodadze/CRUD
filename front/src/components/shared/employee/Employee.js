@@ -48,7 +48,7 @@ const EmployeeItem = ({
       isOpen={updateEmployeeModalShow}
       onClose={() => setUpdateEmployeeModalShow(false)}
       {...employee}
-      handleSubmit={() => handleEmplyeeUpdate()}
+      handleSubmit={handleEmplyeeUpdate}
     />
   );
 

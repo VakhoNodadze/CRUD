@@ -24,7 +24,7 @@ const UpdateEmployeeModal = ({isOpen, onClose, _id, firstName, lastName, positio
   });
   const onSubmit = (values) => {
     console.log('values', values);
-    // handleSubmit(values);
+    handleSubmit(values);
     onClose(false);
   };
   return (
