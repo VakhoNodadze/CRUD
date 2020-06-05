@@ -1,13 +1,13 @@
-import React from 'react';
-import Modal from "../../Modal";
-import List from "../../List";
-import Button from "../../Button";
+import React from 'react'
+import Modal from "../../Modal"
+import List from "../../List"
+import Button from "../../Button"
 
 const RemoveEmployeeModal = ({isOpen,onClose, handleSubmit}) => {
   const onSubmit = () => {
-    handleSubmit();
-    onClose(false);
-  };
+    handleSubmit()
+    onClose(false)
+  }
   return(
     <Modal isOpen={isOpen} onClose={onClose} size="small">
       <Modal.Content>
@@ -39,7 +39,7 @@ const RemoveEmployeeModal = ({isOpen,onClose, handleSubmit}) => {
         </List>
       </Modal.Content>
     </Modal>
-  );
-};
+  )
+}
 
-export default RemoveEmployeeModal;
+export default RemoveEmployeeModal

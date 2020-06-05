@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
-import Grid from "../components/Grid";
+import React, {useEffect} from 'react'
+import Grid from "../components/Grid"
 
-import Employee from "../components/shared/employee/Employee";
+import Employee from "../components/shared/employee/Employee"
 
 const Employees = ({emloyeeArray, handleEmployeeRemove, handleEmplyeeUpdate}) => {
 
@@ -11,11 +11,14 @@ const Employees = ({emloyeeArray, handleEmployeeRemove, handleEmplyeeUpdate}) =>
     <Grid style={{width: '100%'}} spacing={4}>
       {emloyeeArray && emloyeeArray.map((employee) => (
         <Grid.Item xs={12} md={6} lg={4} key={employee._id}>
-          <Employee employee={employee} handleEmployeeRemove={handleEmployeeRemove} handleEmplyeeUpdate={handleEmplyeeUpdate} />
+          <Employee 
+            employee={employee} 
+            handleEmployeeRemove={handleEmployeeRemove} 
+            handleEmplyeeUpdate={handleEmplyeeUpdate} />
         </Grid.Item>
       ))}
     </Grid>
-  );
-};
+  )
+}
 
-export default Employees;
+export default Employees

@@ -14,7 +14,7 @@ const StyledOverlay = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
   transition: all 0.2s ease-in;
   overflow: overlay;
-  opacity: ${props => {
+  opacity: ${(props) => {
     switch (props.fadeType) {
     case 'in':
       return '1'
@@ -22,7 +22,7 @@ const StyledOverlay = styled.div`
       return '0'
     }
   }};
-  transition: ${props => {
+  transition: ${(props) => {
     switch (props.fadeType) {
     case 'in':
       return 'opacity 0.1s ease-in-out'
@@ -35,13 +35,13 @@ const StyledOverlay = styled.div`
 `
 const StyledContainer = styled.div`
   position: absolute;
-  top: ${props => (props.scrolling ? '8%' : 'unset')};
-  margin-bottom: ${props => (props.scrolling ? '8%' : 'unset')};
+  top: ${(props) => (props.scrolling ? '8%' : 'unset')};
+  margin-bottom: ${(props) => (props.scrolling ? '8%' : 'unset')};
   min-height: 200px;
   min-width: 240px;
-  max-height: ${props => (props.scrolling ? 'unset' : '90vh')};
+  max-height: ${(props) => (props.scrolling ? 'unset' : '90vh')};
   max-width: 96%;
-  width: ${props => {
+  width: ${(props) => {
     switch (props.size) {
     case 'medium':
       return '800px'
@@ -54,7 +54,7 @@ const StyledContainer = styled.div`
   background-color: #fff;
   border-radius: ${({ theme }) => theme.borderRadius.big};
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06);
-  transform: ${props => {
+  transform: ${(props) => {
     switch (props.fadeType) {
     case 'in':
       return 'scale(1)'
@@ -62,7 +62,7 @@ const StyledContainer = styled.div`
       return 'scale(0.82)'
     }
   }};
-  transition: ${props => {
+  transition: ${(props) => {
     switch (props.fadeType) {
     case 'in':
       return 'transform 0.1s'
@@ -74,23 +74,23 @@ const StyledContainer = styled.div`
   }};
 
   .content {
-    max-height: ${props => (props.scrolling ? 'unset' : '80vh')};
+    max-height: ${(props) => (props.scrolling ? 'unset' : '80vh')};
   }
 `
 
 const StyledContent = styled.div`
-  padding: ${props => props.theme.paddingVertical.huge} ${props => props.theme.paddingHorizontal.huge};
+  padding: ${(props) => props.theme.paddingVertical.huge} ${(props) => props.theme.paddingHorizontal.huge};
   /* max-height: 80vh; */
 `
 
 const StyledHeader = styled.div`
   width: '100%';
   color: #fff;
-  padding: ${props => props.theme.paddingVertical.huge} ${props => props.theme.paddingHorizontal.huge};
+  padding: ${(props) => props.theme.paddingVertical.huge} ${(props) => props.theme.paddingHorizontal.huge};
   border-radius: ${({ theme }) => theme.borderRadius.big};
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  background-color: ${props => props.theme.color.primary};
+  background-color: ${(props) => props.theme.color.primary};
 `
 
 const StyledClose = styled.div`

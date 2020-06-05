@@ -1,9 +1,9 @@
-import React from 'react';
-import { FormContext, useForm } from 'react-hook-form';
-import Form from '../../Form';
-import Button from "../../Button";
-import {required} from "../../../utils/validator";
-import Modal from "../../Modal";
+import React from 'react'
+import { FormContext, useForm } from 'react-hook-form'
+import Form from '../../Form'
+import Button from "../../Button"
+import {required} from "../../../utils/validator"
+import Modal from "../../Modal"
 
 
 const EmployeeFormModal = ({isOpen, onClose, _id, firstName, lastName, position, company, location, handleSubmit}) => {
@@ -13,15 +13,15 @@ const EmployeeFormModal = ({isOpen, onClose, _id, firstName, lastName, position,
     position,
     company,
     location
-  };
+  }
   const method = useForm({
     mode: 'onChange',
     defaultValues: initialValues
-  });
+  })
   const onSubmit = (values) => {
-    handleSubmit(values, _id);
-    onClose(false);
-  };
+    handleSubmit(values, _id)
+    onClose(false)
+  }
   return (
     <Modal isOpen={isOpen}
       onClose={() => onClose(false)}
@@ -32,23 +32,23 @@ const EmployeeFormModal = ({isOpen, onClose, _id, firstName, lastName, position,
             <div>
               <Form.Field>
                 <Form.Label name="First name" />
-                <Form.Input name="firstName" />
+                <Form.Input name="firstName" validate={required} />
               </Form.Field>
               <Form.Field>
                 <Form.Label name="Last name" />
-                <Form.Input name="lastName" />
+                <Form.Input name="lastName" validate={required} />
               </Form.Field>
               <Form.Field>
                 <Form.Label name="Job title" />
-                <Form.Input name="position" />
+                <Form.Input name="position" validate={required} />
               </Form.Field>
               <Form.Field>
                 <Form.Label name="Company" />
-                <Form.Input name="company" />
+                <Form.Input name="company" validate={required} />
               </Form.Field>
               <Form.Field>
                 <Form.Label name="Location" />
-                <Form.Input name="location" />
+                <Form.Input name="location" validate={required} />
               </Form.Field>
             </div>
             <div
@@ -65,8 +65,8 @@ const EmployeeFormModal = ({isOpen, onClose, _id, firstName, lastName, position,
                   fluid
                   variant="basic"
                   onClick={(e) => {
-                    e.preventDefault();
-                    method.reset(initialValues);
+                    e.preventDefault()
+                    method.reset(initialValues)
                   }}
                 >
                     RESET
@@ -88,7 +88,7 @@ const EmployeeFormModal = ({isOpen, onClose, _id, firstName, lastName, position,
         </FormContext>
       </Modal.Content>
     </Modal>
-  );
-};
+  )
+}
 
-export default EmployeeFormModal;
+export default EmployeeFormModal

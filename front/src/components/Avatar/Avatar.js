@@ -11,7 +11,7 @@ const Avatar = ({
   children, size, avatar, color, borderColor, rounded, firstName, lastName, onClick, LabelIcon
 }) => {
   const handleClick = () => {
-    if (onClick) onClick()
+    if (onClick) {onClick()}
   }
 
   if (avatar && avatar.url) {

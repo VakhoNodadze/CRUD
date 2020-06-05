@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react'
+import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
 
-import ModalHeader from './ModalHeader';
-import ModalContent from './ModalContent';
+import ModalHeader from './ModalHeader'
+import ModalContent from './ModalContent'
 
-import { StyledOverlay, StyledContainer, StyledClose } from './styled';
+import { StyledOverlay, StyledContainer, StyledClose } from './styled'
 import Remove from '../Icon/Remove'
 
 const Modal = ({
@@ -19,24 +19,24 @@ const Modal = ({
   closeConfirmation,
   Confirmation
 }) => {
-  const [fadeType, setFadeType] = useState('out');
+  const [fadeType, setFadeType] = useState('out')
 
   const handleClose = (e) => {
-    if (e) {e.preventDefault();}
-    if (!closeConfirmation) {setFadeType('out');}
+    if (e) {e.preventDefault()}
+    if (!closeConfirmation) {setFadeType('out')}
     setTimeout(() => {
-      onClose({ success: false });
-    }, 200);
-  };
+      onClose({ success: false })
+    }, 200)
+  }
 
   useEffect(
     () => {
       setTimeout(() => {
-        if (isOpen) {setFadeType('in');}
-      }, 0);
+        if (isOpen) {setFadeType('in')}
+      }, 0)
     },
     [isOpen]
-  );
+  )
 
   if (isOpen) {
     return ReactDOM.createPortal(
@@ -58,11 +58,11 @@ const Modal = ({
         {closeConfirmation && Confirmation}
       </StyledOverlay>,
       document.body
-    );
+    )
   }
 
-  return null;
-};
+  return null
+}
 
 Modal.propTypes = {
   isOpen: PropTypes.bool,
@@ -73,7 +73,7 @@ Modal.propTypes = {
   scrolling: PropTypes.bool,
   closeConfirmation: PropTypes.bool,
   Confirmation: PropTypes.object
-};
+}
 
 Modal.defaultProps = {
   isOpen: false,
@@ -84,9 +84,9 @@ Modal.defaultProps = {
   scrolling: false,
   closeConfirmation: false,
   Confirmation: null
-};
+}
 
-Modal.Header = ModalHeader;
-Modal.Content = ModalContent;
+Modal.Header = ModalHeader
+Modal.Content = ModalContent
 
-export default Modal;
+export default Modal

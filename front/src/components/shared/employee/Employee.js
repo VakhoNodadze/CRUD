@@ -1,17 +1,17 @@
-import React, {useEffect, useState} from 'react';
-import RedX from '../../../resources/svg/x_red.svg';
-import styled from 'styled-components';
-import Reveal from '../../Reveal';
-import Card from '../../Card';
-import Item from '../../Item';
-import Divider from '../../Divider';
-import List from '../../List';
-import Tooltip from '../../Tooltip';
-import Avatar from '../../Avatar';
-import RemoveEmployeeModal from '../modals/RemoveEmployeeModal';
-import { capitalizeWords } from '../../../utils/helpers';
-import Pin from "../../Icon/Pin";
-import EmployeeFormModal from "../modals/EmployeeFormModal";
+import React, {useEffect, useState} from 'react'
+import RedX from '../../../resources/svg/x_red.svg'
+import styled from 'styled-components'
+import Reveal from '../../Reveal'
+import Card from '../../Card'
+import Item from '../../Item'
+import Divider from '../../Divider'
+import List from '../../List'
+import Tooltip from '../../Tooltip'
+import Avatar from '../../Avatar'
+import RemoveEmployeeModal from '../modals/RemoveEmployeeModal'
+import { capitalizeWords } from '../../../utils/helpers'
+import Pin from "../../Icon/Pin"
+import EmployeeFormModal from "../modals/EmployeeFormModal"
 
 
 
@@ -20,27 +20,27 @@ const EmployeeItem = ({
   handleEmployeeRemove,
   handleEmplyeeUpdate
 }) => {
-  const { _id, firstName, lastName, company, location, position } = employee;
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [removeEmployeeModalShow, setRemoveEmployeeModalShow] = useState(false);
-  const [updateEmployeeModalShow, setUpdateEmployeeModalShow] = useState(false);
+  const { _id, firstName, lastName, company, location, position } = employee
+  const [isFlipped, setIsFlipped] = useState(false)
+  const [removeEmployeeModalShow, setRemoveEmployeeModalShow] = useState(false)
+  const [updateEmployeeModalShow, setUpdateEmployeeModalShow] = useState(false)
   
   const onEdit = () => {
-    setUpdateEmployeeModalShow(true);
-  };
+    setUpdateEmployeeModalShow(true)
+  }
 
   const onRemove = () => {
-    setRemoveEmployeeModalShow(true);
-  };
+    setRemoveEmployeeModalShow(true)
+  }
 
 
   const renderRemoveEmployeeModal = () => (
     <RemoveEmployeeModal
       isOpen={removeEmployeeModalShow}
       onClose={() => setRemoveEmployeeModalShow(false)}
-      handleSubmit={(_id) => handleEmployeeRemove(_id)}
+      handleSubmit={() => handleEmployeeRemove(_id)}
     />
-  );
+  )
   const renderUpdateEmployeeModal = () => (
     <EmployeeFormModal
       isOpen={updateEmployeeModalShow}
@@ -48,7 +48,7 @@ const EmployeeItem = ({
       {...employee}
       handleSubmit={handleEmplyeeUpdate}
     />
-  );
+  )
 
   return (
     <div style={{ width: '300px', height: '358px' }}>
@@ -155,8 +155,8 @@ const EmployeeItem = ({
         </Reveal.Content>
       </Reveal>
     </div>
-  );
-};
+  )
+}
 
 
 const WrongAvatar = styled.div`
@@ -180,6 +180,6 @@ const WrongAvatar = styled.div`
     transition: opacity 400ms ease-in-out;
     opacity: 1;
   }
-`;
+`
 
-export default React.memo(EmployeeItem);
+export default React.memo(EmployeeItem)

@@ -70,7 +70,7 @@ const Home = () => {
         try {
             await add_new_employee({
                 variables: {
-                    firstName: values.firstName,
+                                                                 firstName: values.firstName,
                     lastName: values.lastName,
                     position: values.position,
                     company: values.company,
@@ -96,12 +96,11 @@ const Home = () => {
         }
     }
     const handleEmplyeeUpdate = async (values, id) => {
-        console.log('id', id)
         try {
             await update_employee({
                 variables: {
                     id,
-                    firstName: values && values.firstName,
+                        firstName: values && values.firstName,
                     lastName: values && values.lastName,
                     position: values && values.position,
                     company: values && values.company,
@@ -111,7 +110,6 @@ const Home = () => {
             refetchEmployees()
         } catch (error) {
             addToast('error', `${capitalizeFirstLetter(error.message.replace('GraphQL error: ', ''))}`)
-            console.log(error.message)
         }
     }
   

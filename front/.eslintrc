@@ -17,10 +17,14 @@
       "warn",
       2
     ],
+    "semi": [
+      2,
+      "never"
+    ],
     "no-confusing-arrow": "warn",
     "no-empty-function": "error",
     "no-lone-blocks": "error",
-    "no-multi-spaces": "warn",
+    "no-multi-spaces": "error",
     "no-underscore-dangle": "warn",
     "no-dupe-else-if": "warn",
     "arrow-parens": "warn",
@@ -28,6 +32,6 @@
     "default-case": "error",
     "curly": "error",
     "complexity": ["error", 20],
-    "semi": 1
+//    "semi": 1
   }
 }

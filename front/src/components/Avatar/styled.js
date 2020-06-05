@@ -5,18 +5,18 @@ const StyledContainer = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-radius: ${props => (props.rounded ? props.theme.borderRadius.default : props.theme.borderRadius.circular)};
-  background-color: ${props => (props.color ? props.color : props.theme.color.disabled)};
-  width: ${props => props.theme.avatarSize[props.size]};
-  height: ${props => props.theme.avatarSize[props.size]};
-  font-size: ${props => props.theme.fontSize[props.size]};
+  border-radius: ${(props) => (props.rounded ? props.theme.borderRadius.default : props.theme.borderRadius.circular)};
+  background-color: ${(props) => (props.color ? props.color : props.theme.color.disabled)};
+  width: ${(props) => props.theme.avatarSize[props.size]};
+  height: ${(props) => props.theme.avatarSize[props.size]};
+  font-size: ${(props) => props.theme.fontSize[props.size]};
 
-  ${props => props.borderColor
+  ${(props) => props.borderColor
     && css`
       border: 2px solid ${props.borderColor};
     `};
 
-  ${props => props.clickable
+  ${(props) => props.clickable
     && css`
       cursor: pointer;
     `};
