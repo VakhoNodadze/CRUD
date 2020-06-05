@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState} from 'react'
 import RedX from '../../../resources/svg/x_red.svg'
-import styled from 'styled-components'
 import Reveal from '../../Reveal'
 import Card from '../../Card'
 import Item from '../../Item'
@@ -159,27 +158,5 @@ const EmployeeItem = ({
 }
 
 
-const WrongAvatar = styled.div`
-  position: absolute;
-  width: 64px;
-  height: 64px;
-  top: 0;
-  left: 0;
-  background: rgba(38, 117, 254, 0.8);
-  opacity: 0;
-  color: rgba(250, 120, 16, 1);
-  text-align: center;
-  border-radius: 8px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  letter-spacing: 0.6px;
-  &:hover {
-    transition: opacity 400ms ease-in-out;
-    opacity: 1;
-  }
-`
 
 export default React.memo(EmployeeItem)

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import Grid from "../components/Grid"
 
 import Employee from "../components/shared/employee/Employee"

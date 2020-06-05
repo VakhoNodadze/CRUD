@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyledContainer, StyledContent, StyledStartIcon } from './styled'
+import { StyledContainer, StyledStartIcon } from './styled'
 
 import Tooltip from '../Tooltip'
 
