@@ -2,7 +2,8 @@
   "scripts": {
     "build": "cd front && npm build",
     "install": "cd front && npm install",
-    "heroku-postbuild": "npm run install && npm run build",
+    "install-backed": "cd backend && npm install",
+    "heroku-postbuild": "npm run install && install-backed && npm run build",
     "start": "node backend/node app.js"
   }
 }
