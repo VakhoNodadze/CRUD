@@ -1,7 +1,6 @@
 let fs = require("fs");
 let path = require("path");
 let express = require("express");
-let avatarsMiddleware = require('adorable-avatars')
 let graphqlHTTP = require("express-graphql");
 let { buildSchema } = require("graphql");
 
@@ -55,6 +54,7 @@ let root = {
 };
 
 let app = express();
+const PORT = process.env.PORT || 4000
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -66,7 +66,6 @@ app.use((req, res, next) => {
   }
   next();
 });
-app.use('/myAvatars', avatarsMiddleware)
 app.use(
   "/graphql",
   graphqlHTTP({
@@ -76,10 +75,18 @@ app.use(
   })
 );
 
+
+// const connection = "mongodb+srv://admin:OmegaZero0@crud-cluster.afad9.mongodb.net/test?authSource=admin&replicaSet=atlas-s9qgmo-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true";
+const connection = process.env.MONGODB_URL || 'mongodb+srv://admin:OmegaZero0@crud-cluster.afad9.mongodb.net/employees?authSource=admin&replicaSet=atlas-s9qgmo-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true';
+
+if(process.env.NODE_ENV === 'production'){
+
+}
+
 mongoose
-  .connect(`mongodb://localhost:27017/vakho`)
+  .connect(connection,{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
   .then(() => {
-    app.listen(4000, () => console.log("Now browse to localhost:4000/graphql"));
+    app.listen(PORT, () => console.log("Now browse to localhost:4000/graphql"));
   })
   .catch(err => {
     console.log(err);

@@ -4,12 +4,13 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
-    "adorable-avatars": "^0.4.1",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
     "graphql": "^14.5.8",
+    "mongodb": "^3.6.3",
     "mongoose": "^5.7.1",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "sharp": "^0.26.3"
   },
   "devDependencies": {},
   "scripts": {
