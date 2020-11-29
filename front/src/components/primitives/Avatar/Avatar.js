@@ -5,7 +5,7 @@ import { StyledContainer } from './styled'
 
 import Image from '../Image'
 
-import { sizes } from '../../styled/oneOf'
+import { sizes } from '../../../styled/oneOf'
 
 const Avatar = ({
   children, size, avatar, color, borderColor, rounded, firstName, lastName, onClick, LabelIcon

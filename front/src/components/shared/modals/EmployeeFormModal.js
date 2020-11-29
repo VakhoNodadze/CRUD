@@ -1,9 +1,9 @@
 import React from 'react'
 import { FormContext, useForm } from 'react-hook-form'
-import Form from '../../Form'
-import Button from "../../Button"
+import Form from '../../primitives/Form'
+import Button from "../../primitives/Button"
 import {required} from "../../../utils/validator"
-import Modal from "../../Modal"
+import Modal from "../../primitives/Modal"
 
 
 const EmployeeFormModal = ({isOpen, onClose, _id, firstName, lastName, position, company, location, handleSubmit}) => {

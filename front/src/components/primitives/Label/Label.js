@@ -5,7 +5,7 @@ import { StyledLabel, StyledRemove } from './styled'
 import Tooltip from '../Tooltip'
 import Remove from '../Icon/Remove'
 
-import { variants, colors } from '../../styled/oneOf'
+import { variants, colors } from '../../../styled/oneOf'
 
 const Label = ({
   children, color, variant, numOfLines, onClick, onRemove, ...rest

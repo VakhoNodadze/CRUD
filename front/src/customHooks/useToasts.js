@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 
-import Toast from '../components/Toast';
+import Toast from '../components/primitives/Toast';
 
 import { generateId } from '../utils/helpers';
 

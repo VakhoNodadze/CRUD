@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { StyledContainer } from './styled'
 
-import { sizes } from '../../styled/oneOf'
+import { sizes } from '../../../styled/oneOf'
 
 const Image = ({ src, size, ...rest }) => (
   <StyledContainer size={size}>

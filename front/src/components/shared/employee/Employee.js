@@ -1,15 +1,15 @@
 import React, { useState} from 'react'
 import RedX from '../../../resources/svg/x_red.svg'
-import Reveal from '../../Reveal'
-import Card from '../../Card'
-import Item from '../../Item'
-import Divider from '../../Divider'
-import List from '../../List'
-import Tooltip from '../../Tooltip'
-import Avatar from '../../Avatar'
+import Reveal from '../../primitives/Reveal'
+import Card from '../../primitives/Card'
+import Item from '../../primitives/Item'
+import Divider from '../../primitives/Divider'
+import List from '../../primitives/List'
+import Tooltip from '../../primitives/Tooltip'
+import Avatar from '../../primitives/Avatar'
 import RemoveEmployeeModal from '../modals/RemoveEmployeeModal'
 import { capitalizeWords } from '../../../utils/helpers'
-import Pin from "../../Icon/Pin"
+import Pin from "../../primitives/Icon/Pin"
 import EmployeeFormModal from "../modals/EmployeeFormModal"
 
 
@@ -82,7 +82,7 @@ const EmployeeItem = ({
             </div>
             <Card.Content>
               <Item size="big">
-                <Avatar avatar={{ url: `https://api.adorable.io/avatars/${_id}` }} rounded firstName={firstName} />
+                <Avatar avatar={{ url: `https://www.tinygraphs.com/squares/${_id}?theme=bythepool&numcolors=4&size=220&fmt=png` }} rounded firstName={firstName} />
                 {/*{renderAvatar()}*/}
                 <Item.Content style={{ width: 170, marginLeft: 16 }}>
                   <Item.Header numOfLines={1}>{firstName} {lastName}</Item.Header>

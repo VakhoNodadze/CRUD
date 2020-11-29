@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import Employees from "./Employees";
-import Grid from '../components/Grid';
-import Container from '../components/Container';
-import Button from "../components/Button";
+import Grid from '../components/primitives/Grid';
+import Container from '../components/primitives/Container';
+import Button from "../components/primitives/Button";
 import EmployeeFormModal from "../components/shared/modals/EmployeeFormModal";
 import gql from "graphql-tag";
 import {useMutation, useQuery} from "react-apollo-hooks";

@@ -18,7 +18,7 @@ import {
 } from './styled'
 import * as icons from '../Icon'
 
-import { sizes, attachs } from '../../styled/oneOf'
+import { sizes, attachs } from '../../../styled/oneOf'
 
 const Input = ({
   onChange,

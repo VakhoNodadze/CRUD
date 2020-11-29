@@ -6,7 +6,7 @@ import Tooltip from '../Tooltip'
 
 import {
   sizes, attachs, variants, colors
-} from '../../styled/oneOf'
+} from '../../../styled/oneOf'
 
 const Button = ({
   children,

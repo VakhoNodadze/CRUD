@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
-import { sizes, positions } from '../../styled/oneOf'
+import { sizes, positions } from '../../../styled/oneOf'
 
 import { StyledContainer, StyledContent } from './styled'
 

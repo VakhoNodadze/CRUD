@@ -7,7 +7,7 @@ import ItemHeader from './ItemHeader'
 import ItemSubheader from './ItemSubheader'
 import ItemExtra from './ItemExtra'
 
-import { sizes } from '../../styled/oneOf'
+import { sizes } from '../../../styled/oneOf'
 
 const Item = ({
   children, size, padded, ...rest

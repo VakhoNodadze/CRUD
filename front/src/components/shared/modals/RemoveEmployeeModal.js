@@ -1,7 +1,7 @@
 import React from 'react'
-import Modal from "../../Modal"
-import List from "../../List"
-import Button from "../../Button"
+import Modal from "../../primitives/Modal"
+import List from "../../primitives/List"
+import Button from "../../primitives/Button"
 
 const RemoveEmployeeModal = ({isOpen,onClose, handleSubmit}) => {
   const onSubmit = () => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import Grid from "../components/Grid"
+import Grid from "../components/primitives/Grid"
 
 import Employee from "../components/shared/employee/Employee"
 

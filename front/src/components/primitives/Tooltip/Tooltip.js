@@ -5,9 +5,9 @@ import {
   StyledContainer, StyledContent, StyledTip, StyledTipContent
 } from './styled'
 
-import useWindowSize from '../../customHooks/useWindowsize'
+import useWindowSize from '../../../customHooks/useWindowsize'
 
-import { positions } from '../../styled/oneOf'
+import { positions } from '../../../styled/oneOf'
 
 const Portal = ({ children }) => ReactDOM.createPortal(children, document.body)
 

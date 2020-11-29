@@ -4,7 +4,7 @@ import { StyledContainer } from './styled'
 
 import GridItem from './GridItem'
 
-import { spacings } from '../../styled/oneOf'
+import { spacings } from '../../../styled/oneOf'
 
 const Grid = ({ children, spacing, ...rest }) => (
   <StyledContainer className="grid" spacing={spacing} {...rest}>

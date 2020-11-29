@@ -17,9 +17,9 @@ import {
 import * as icons from '../Icon'
 import Label from '../Label'
 
-import { attachs, sizes } from '../../styled/oneOf'
+import { attachs, sizes } from '../../../styled/oneOf'
 
-import { generateId } from '../../utils/helpers'
+import { generateId } from '../../../utils/helpers'
 
 const Select = ({
   size,

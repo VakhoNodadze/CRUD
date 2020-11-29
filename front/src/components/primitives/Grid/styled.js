@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { respondTo } from '../../styled/responsive'
+import { respondTo } from '../../../styled/responsive'
 
 // function generateBreakpointStyles(props) {
 //   const styles = []
