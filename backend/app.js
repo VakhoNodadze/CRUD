@@ -76,8 +76,7 @@ app.use(
 );
 
 
-// const connection = "mongodb+srv://admin:OmegaZero0@crud-cluster.afad9.mongodb.net/test?authSource=admin&replicaSet=atlas-s9qgmo-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true";
-const connection = process.env.MONGODB_URL || 'mongodb+srv://admin:OmegaZero0@crud-cluster.afad9.mongodb.net/employees?authSource=admin&replicaSet=atlas-s9qgmo-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true';
+const connection = process.env.MONGODB_URL;
 
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static('../front/build'));
